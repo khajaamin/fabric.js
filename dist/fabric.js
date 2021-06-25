@@ -1,7 +1,7 @@
 /* build: `node build.js modules=ALL exclude=gestures,accessors,erasing requirejs minifier=uglifyjs` */
 /*! Fabric.js Copyright 2008-2015, Printio (Juriy Zaytsev, Maxim Chernyak) */
 
-var fabric = fabric || { version: '4.5.0' };
+var fabric = fabric || { version: '4.5.1' };
 if (typeof exports !== 'undefined') {
   exports.fabric = fabric;
 }
@@ -26309,6 +26309,7 @@ fabric.Image.filters.BaseFilter.fromObject = function(object, callback) {
         // drawingLeft = isLtr ? left : left - this.getLineWidth(lineIndex);
         ctx.canvas.setAttribute('dir', isLtr ? 'ltr' : 'rtl');
         ctx.direction = isLtr ? 'ltr' : 'rtl';
+        ctx.textAlign = isLtr ? 'left' : 'right';
         this._renderChar(method, ctx, lineIndex, 0, line.join(''), left, top, lineHeight);
         ctx.restore();
         return;
@@ -26347,6 +26348,7 @@ fabric.Image.filters.BaseFilter.fromObject = function(object, callback) {
             drawingLeft = left;
             ctx.canvas.setAttribute('dir', isLtr ? 'ltr' : 'rtl');
             ctx.direction = isLtr ? 'ltr' : 'rtl';
+            ctx.textAlign = isLtr ? 'left' : 'right';
             this._renderChar(method, ctx, lineIndex, i, charsToRender, drawingLeft, top, lineHeight);
           }
           charsToRender = '';
