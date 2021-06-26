@@ -2624,6 +2624,8 @@ fabric.CommonMethods = {
 
 
 (function() {
+  var GraphemeSplitter = require('grapheme-splitter')
+  const splitter = new GraphemeSplitter()
 
   /**
    * Camelizes a string
@@ -2672,14 +2674,17 @@ fabric.CommonMethods = {
    * @return {Array} array containing the graphemes
    */
   function graphemeSplit(textstring) {
-    var i = 0, chr, graphemes = [];
-    for (i = 0, chr; i < textstring.length; i++) {
-      if ((chr = getWholeChar(textstring, i)) === false) {
-        continue;
-      }
-      graphemes.push(chr);
-    }
-    return graphemes;
+   // var i = 0, chr, graphemes = [];
+    // for (i = 0, chr; i < textstring.length; i++) {
+    //   // if ((chr = getWholeChar(textstring, i)) === false) {
+    //   //   continue;
+    //   // }
+
+    //   chr = splitter.splitGraphemes(textstring);
+    //   console.log('chr', chr)
+    //   graphemes.push(chr);
+    // }
+    return splitter.splitGraphemes(textstring);
   }
 
   // taken from mdn in the charAt doc page.
